@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search and Download Videos</title>
+</head>
+<body>
+    <h1>Search for Videos</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="query" placeholder="Enter video search query">
+        <button type="submit">Search</button>
+    </form>
+
+    <h1>Or Download a Video by URL</h1>
+    <form action="/download" method="POST">
+        <input type="text" name="video_url" placeholder="Enter video URL">
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>

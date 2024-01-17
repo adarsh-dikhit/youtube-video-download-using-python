@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <ul>
+        {% for video_link in video_links %}
+            <li>
+                <a href="{{ video_link }}">{{ video_link }}</a>
+                <button class="download-button" data-video-url="{{ video_link }}">Download</button>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle download button clicks
+            $('.download-button').click(function() {
+                var videoLink = $(this).data('video-url');
+                downloadVideo(videoLink);
+            });
+            
+            // Function to trigger the download
+            function downloadVideo(videoUrl) {
+                $.ajax({
+                    url: '/download',
+                    method: 'POST',
+                    data: { video_url: videoUrl },
+                    success: function(response) {
+                        alert(response); // Display the download status
+                    },
+                    error: function() {
+                        alert('Download failed.'); // Handle errors
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
